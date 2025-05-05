@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Class Activities Website</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stocks.html">Stocks</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <p id="stock-quote">Loading stock quote...</p>
+
+      <div class="buttons">
+        <button class="button-74" onclick="window.location.href='stocks.html'">Stocks</button>
+        <button class="button-74" onclick="window.location.href='dogs.html'">Dogs</button>
+      </div>
+    </main>
+
+
+ <div class="audio-controls">
+  <h3>Voice Commands:</h3>
+  <p>"Hello", "Change the color to red", "Navigate to stocks"</p>
+  <button onclick="startVoice()" class="button-74">Turn On Audio</button>
+  <button onclick="stopVoice()" class="button-74">Turn Off Audio</button>
+</div>
+
+  <script src="script.js"></script>
+  <script>
+    fetch("https://api.quotable.io/random")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("quote-container").textContent = `"${data.content}" — ${data.author}`;
+      });
+  </script>
+</body>
+</html>
